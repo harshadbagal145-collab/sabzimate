@@ -33,7 +33,11 @@ export default function CombosShowcase({
               <div>
                 <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-900">
                   <Sparkles className="h-3.5 w-3.5" />
-                  {lang === 'en' ? 'Items #28 – #31 • 200g Packs' : 'आयटम #२८ – #३१ • २०० ग्रॅम पॅक्स'}
+                  {lang === 'en'
+                    ? 'Items #28 – #31 • 200g Packs'
+                    : lang === 'hi'
+                    ? 'आइटम #28 – #31 • 200g पैक्स'
+                    : 'आयटम #२८ – #३१ • २०० ग्रॅम पॅक्स'}
                 </span>
                 <h2 className="font-display mt-2.5 text-2xl font-bold text-[#14281D] sm:text-3xl">
                   {copy.combosTitle}
@@ -67,11 +71,16 @@ export default function CombosShowcase({
                       <div className="flex items-center gap-2">
                         <span className="text-xl">{item.emoji}</span>
                         <h3 className="truncate text-sm font-bold text-[#14281D]">
-                          #{item.srNo} {lang === 'en' ? item.nameEn : item.nameMr}
+                          #{item.srNo}{' '}
+                          {lang === 'en' ? item.nameEn : lang === 'hi' ? item.nameHi : item.nameMr}
                         </h3>
                       </div>
                       <p className="mt-1 line-clamp-2 text-xs text-[#526B5C]">
-                        {lang === 'en' ? item.subtitleEn : item.subtitleMr}
+                        {lang === 'en'
+                          ? item.subtitleEn
+                          : lang === 'hi'
+                          ? item.subtitleHi
+                          : item.subtitleMr}
                       </p>
                       <p className="mt-1.5 text-xs font-bold text-[#1B5E32]">
                         ₹{item.price}{' '}
@@ -86,7 +95,7 @@ export default function CombosShowcase({
                         className="inline-flex min-h-[40px] shrink-0 items-center gap-1 rounded-full bg-emerald-50 px-3.5 text-xs font-bold text-[#1B5E32] transition hover:bg-[#1B5E32] hover:text-white active:scale-95"
                       >
                         <Plus className="h-3.5 w-3.5" />
-                        <span>{lang === 'en' ? 'Add' : 'जोडा'}</span>
+                        <span>{lang === 'en' ? 'Add' : lang === 'hi' ? 'जोड़ें' : 'जोडा'}</span>
                       </button>
                     ) : (
                       <div className="inline-flex min-h-[40px] shrink-0 items-center gap-1.5 rounded-full bg-[#1B5E32] px-2 py-1 text-white shadow-xs">

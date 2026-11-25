@@ -56,15 +56,27 @@ export default function HeroSection({ lang }) {
             <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-medium text-[#435B4D] sm:mt-7 sm:gap-x-5">
               <span className="inline-flex items-center gap-1.5">
                 <CheckCircle2 className="h-4 w-4 shrink-0 text-[#1B5E32]" />
-                {lang === 'en' ? 'Zero Cold-Storage Stock' : 'जुना साठा नाही'}
+                {lang === 'en'
+                  ? 'Zero Cold-Storage Stock'
+                  : lang === 'hi'
+                  ? 'कोई कोल्ड-स्टोरेज स्टॉक नहीं'
+                  : 'जुना साठा नाही'}
               </span>
               <span className="inline-flex items-center gap-1.5">
                 <CheckCircle2 className="h-4 w-4 shrink-0 text-[#1B5E32]" />
-                {lang === 'en' ? 'Hygienic Food-Grade Packing' : 'स्वच्छ व सुरक्षित पॅकिंग'}
+                {lang === 'en'
+                  ? 'Hygienic Food-Grade Packing'
+                  : lang === 'hi'
+                  ? 'स्वच्छ व सुरक्षित पैकिंग'
+                  : 'स्वच्छ व सुरक्षित पॅकिंग'}
               </span>
               <span className="inline-flex items-center gap-1.5">
                 <CheckCircle2 className="h-4 w-4 shrink-0 text-[#1B5E32]" />
-                {lang === 'en' ? 'Seawoods • Nerul • Belapur • Ulwe' : 'सीवूड्स • नेरूळ • बेलापूर • उलवे'}
+                {lang === 'en'
+                  ? 'Seawoods • Nerul • Belapur • Ulwe'
+                  : lang === 'hi'
+                  ? 'सीवुड्स • नेरूल • बेलापूर • उलवे'
+                  : 'सीवूड्स • नेरूळ • बेलापूर • उलवे'}
               </span>
             </div>
           </div>
@@ -81,16 +93,26 @@ export default function HeroSection({ lang }) {
               <div className="mt-2 flex flex-wrap items-center justify-between gap-2.5 rounded-xl border border-[#E3DEC9] bg-[#FAF8F2] px-3.5 py-2.5 sm:mt-0 sm:absolute sm:bottom-5 sm:left-5 sm:right-5 sm:rounded-2xl sm:border-white/60 sm:bg-[#FAF8F2]/95 sm:px-4 sm:py-3 sm:backdrop-blur-md sm:shadow-lg">
                 <div>
                   <p className="text-[10px] font-bold tracking-wider text-[#1B5E32] uppercase sm:text-[11px]">
-                    {lang === 'en' ? 'Daily Harvest Promise' : 'दररोजची ताजी खरेदी'}
+                    {lang === 'en'
+                      ? 'Daily Harvest Promise'
+                      : lang === 'hi'
+                      ? 'रोज़ाना ताज़ा खरीद का वादा'
+                      : 'दररोजची ताजी खरेदी'}
                   </p>
                   <p className="text-xs font-bold text-[#14281D] sm:text-sm">
                     {lang === 'en'
                       ? 'Bought 5 AM → Cut Fresh → Delivered 4–5 PM'
+                      : lang === 'hi'
+                      ? 'सुबह 5 बजे खरीद → ताज़ी कटिंग → शाम 4–5 बजे डिलीवरी'
                       : 'सकाळी ५ खरेदी → ताजी कटिंग → सायं. ४–५ डिलिव्हरी'}
                   </p>
                 </div>
                 <span className="rounded-full bg-[#E8A317] px-2.5 py-1 text-[11px] font-bold text-[#14281D] sm:px-3 sm:text-xs">
-                  {lang === 'en' ? 'Save 45 mins/day' : 'रोज ४५ मिनिटे वाचवा'}
+                  {lang === 'en'
+                    ? 'Save 45 mins/day'
+                    : lang === 'hi'
+                    ? 'रोज़ 45 मिनट बचाइए'
+                    : 'रोज ४५ मिनिटे वाचवा'}
                 </span>
               </div>
             </div>

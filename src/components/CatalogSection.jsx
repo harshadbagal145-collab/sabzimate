@@ -25,12 +25,18 @@ export default function CatalogSection({
 
       if (searchQuery.trim()) {
         const q = searchQuery.toLowerCase().trim();
-        const hay = `${item.srNo} ${item.nameEn} ${item.nameMr} ${item.subtitleEn} ${item.prepStyle}`.toLowerCase();
+        const hay = `${item.srNo} ${item.nameEn} ${item.nameMr} ${item.nameHi || ''} ${item.subtitleEn} ${item.subtitleHi || ''} ${item.prepStyle}`.toLowerCase();
         return hay.includes(q);
       }
       return true;
     });
   }, [catalog, activeCategory, searchQuery, quickFilter]);
+
+  const getCategoryLabel = (cat) => {
+    if (lang === 'hi') return cat.labelHi || cat.labelEn;
+    if (lang === 'mr') return cat.labelMr;
+    return cat.labelEn;
+  };
 
   return (
     <section id="menu" className="py-10 sm:py-16">
@@ -83,7 +89,7 @@ export default function CatalogSection({
                       : 'border border-[#DDD7C3] bg-white text-[#2E4738] hover:border-[#1B5E32]'
                   }`}
                 >
-                  {lang === 'en' ? cat.labelEn : cat.labelMr}
+                  {getCategoryLabel(cat)}
                 </button>
               );
             })}
@@ -101,7 +107,7 @@ export default function CatalogSection({
               }`}
             >
               <Sparkles className="mr-1 inline h-3 w-3" />
-              {lang === 'en' ? 'Bestsellers' : 'लोकप्रिय'}
+              {lang === 'en' ? 'Bestsellers' : lang === 'hi' ? 'बेस्टसेलर्स' : 'लोकप्रिय'}
             </button>
             <button
               type="button"
@@ -112,7 +118,7 @@ export default function CatalogSection({
                   : 'border-[#DDD7C3] bg-white text-[#435B4D] hover:border-[#1B5E32]'
               }`}
             >
-              {lang === 'en' ? '₹35 & Under' : '₹३५ पर्यंत'}
+              {lang === 'en' ? '₹35 & Under' : lang === 'hi' ? '₹35 तक' : '₹३५ पर्यंत'}
             </button>
           </div>
         </div>
@@ -121,7 +127,11 @@ export default function CatalogSection({
         {filteredItems.length === 0 ? (
           <div className="mt-8 rounded-3xl border border-dashed border-[#CFC8B0] bg-white p-8 text-center sm:mt-10 sm:p-10">
             <p className="text-base font-semibold text-[#14281D]">
-              {lang === 'en' ? 'No vegetables match your search.' : 'तुमच्या शोधाशी जुळणारी भाजी सापडली नाही.'}
+              {lang === 'en'
+                ? 'No vegetables match your search.'
+                : lang === 'hi'
+                ? 'आपकी खोज से मेल खाती कोई सब्ज़ी नहीं मिली।'
+                : 'तुमच्या शोधाशी जुळणारी भाजी सापडली नाही.'}
             </p>
             <button
               type="button"
@@ -132,7 +142,7 @@ export default function CatalogSection({
               }}
               className="mt-3 min-h-[40px] rounded-full bg-[#1B5E32] px-5 py-2 text-xs font-bold text-white"
             >
-              {lang === 'en' ? 'Reset Filters' : 'सर्व पहा'}
+              {lang === 'en' ? 'Reset Filters' : lang === 'hi' ? 'फ़िल्टर हटाएं' : 'सर्व पहा'}
             </button>
           </div>
         ) : (
@@ -178,16 +188,20 @@ export default function CatalogSection({
 
                     {/* Names */}
                     <h3 className="mt-3 text-base leading-snug font-bold text-[#14281D]">
-                      {lang === 'en' ? item.nameEn : item.nameMr}
+                      {lang === 'en' ? item.nameEn : lang === 'hi' ? item.nameHi : item.nameMr}
                     </h3>
                     <p className="text-xs font-medium text-[#5C7365]">
                       {lang === 'en' ? item.nameMr : item.nameEn}
                     </p>
                     <p className="mt-1.5 text-xs leading-relaxed text-[#526B5C]">
-                      {lang === 'en' ? item.subtitleEn : item.subtitleMr}
+                      {lang === 'en'
+                        ? item.subtitleEn
+                        : lang === 'hi'
+                        ? item.subtitleHi
+                        : item.subtitleMr}
                     </p>
 
-                    {/* Cut Preference Selector (16px on mobile prevents iOS focus zoom) */}
+                    {/* Cut Preference Selector */}
                     {item.cutOptions.length > 1 && (
                       <div className="mt-3">
                         <label className="sr-only" htmlFor={`cut-${item.id}`}>
@@ -225,7 +239,7 @@ export default function CatalogSection({
                         className="inline-flex min-h-[40px] items-center gap-1 rounded-full border border-[#1B5E32] bg-white px-4 py-1.5 text-xs font-bold text-[#1B5E32] transition hover:bg-[#1B5E32] hover:text-white active:scale-95 sm:min-h-[34px]"
                       >
                         <Plus className="h-3.5 w-3.5" />
-                        <span>{lang === 'en' ? 'Add' : 'जोडा'}</span>
+                        <span>{lang === 'en' ? 'Add' : lang === 'hi' ? 'जोड़ें' : 'जोडा'}</span>
                       </button>
                     ) : (
                       <div className="inline-flex min-h-[40px] items-center gap-2 rounded-full bg-[#1B5E32] px-2 py-1 text-white shadow-xs sm:min-h-[34px]">

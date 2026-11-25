@@ -169,7 +169,8 @@ export default function App() {
     <div className="min-h-screen overflow-x-clip bg-[#FAF8F2] text-[#14281D]">
       <Navbar
         lang={lang}
-        onToggleLang={() => setLang((prev) => (prev === 'en' ? 'mr' : 'en'))}
+        onChangeLang={setLang}
+        onToggleLang={() => setLang((prev) => (prev === 'en' ? 'mr' : prev === 'mr' ? 'hi' : 'en'))}
         cartCount={cartCount}
         cartSubtotal={cartSubtotal}
         onOpenCart={() => setIsCartOpen(true)}
@@ -225,7 +226,11 @@ export default function App() {
               onClick={() => setIsAdminOpen(true)}
               className="font-semibold text-[#E8A317] hover:underline"
             >
-              Open Owner Admin & Database Demo
+              {lang === 'en'
+                ? 'Open Owner Admin & Database Demo'
+                : lang === 'hi'
+                ? 'ओनर एडमिन व डेटाबेस डेमो'
+                : 'ओनर ॲडमिन व डेटाबेस डेमो'}
             </button>
             <a
               href={BUSINESS_INFO.instagramUrl}
@@ -248,10 +253,22 @@ export default function App() {
             className="flex min-h-[52px] w-full items-center justify-between rounded-2xl bg-[#1B5E32] px-4 py-3 text-sm font-bold text-white shadow-2xl ring-1 ring-white/15"
           >
             <span>
-              {cartCount} {cartCount === 1 ? 'item' : 'items'} in basket
+              {cartCount}{' '}
+              {cartCount === 1
+                ? lang === 'en'
+                  ? 'item'
+                  : lang === 'hi'
+                  ? 'सब्ज़ी'
+                  : 'आयटम'
+                : lang === 'en'
+                ? 'items'
+                : lang === 'hi'
+                ? 'सब्ज़ियाँ'
+                : 'आयटम'}{' '}
+              {lang === 'en' ? 'in basket' : lang === 'hi' ? 'टोकरी में' : 'बॅगमध्ये'}
             </span>
             <span className="rounded-full bg-[#E8A317] px-3 py-1 text-xs font-extrabold text-[#14281D]">
-              View Basket • ₹{cartSubtotal} →
+              {lang === 'en' ? 'View Basket' : lang === 'hi' ? 'टोकरी देखें' : 'बॅग पहा'} • ₹{cartSubtotal} →
             </span>
           </button>
         </div>

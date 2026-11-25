@@ -30,7 +30,11 @@ export default function HowItWorksSection({ lang }) {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-xs font-bold tracking-widest text-[#1B5E32] uppercase">
-              {lang === 'en' ? '1-Day Prior Freshness Model' : '१ दिवस आधी ऑर्डर करण्याची पद्धत'}
+              {lang === 'en'
+                ? '1-Day Prior Freshness Model'
+                : lang === 'hi'
+                ? '1 दिन पहले ऑर्डर करने का ताज़ा मॉडल'
+                : '१ दिवस आधी ऑर्डर करण्याची पद्धत'}
             </p>
             <h2 className="font-display mt-2 text-2xl font-bold text-[#14281D] sm:text-3xl">
               {copy.howTitle}
@@ -65,11 +69,15 @@ export default function HowItWorksSection({ lang }) {
               <h2 className="font-display mt-3 text-2xl font-bold sm:text-4xl">
                 {lang === 'en'
                   ? 'Eat Fresh, Live Healthy — Every Day in Navi Mumbai'
+                  : lang === 'hi'
+                  ? 'ताज़ी सब्ज़ियाँ खाएं, स्वस्थ रहें — नवी मुंबई में हर दिन!'
                   : 'ताज्या भाज्या खा, निरोगी रहा — नवी मुंबईत दररोज!'}
               </h2>
               <p className="mt-3 max-w-xl text-sm leading-relaxed text-emerald-100/80">
                 {lang === 'en'
                   ? 'Visit our Seawoods pickup point near Railway Station East Entry or order online and confirm directly on WhatsApp.'
+                  : lang === 'hi'
+                  ? 'सीवुड्स रेलवे स्टेशन ईस्ट एंट्री के पास हमारे पिकअप पॉइंट पर आएं या ऑनलाइन ऑर्डर करके सीधे व्हाट्सएप पर कन्फर्म करें।'
                   : 'सीवूड्स रेल्वे स्टेशन ईस्ट एंट्री जवळील आमच्या केंद्रावर भेट द्या किंवा ऑनलाइन व व्हॉट्सॲपद्वारे ऑर्डर नोंदवा.'}
               </p>
 
@@ -78,10 +86,14 @@ export default function HowItWorksSection({ lang }) {
                   <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-[#E8A317]" />
                   <div>
                     <p className="text-xs font-bold tracking-wide text-emerald-200 uppercase">
-                      {lang === 'en' ? 'Our Location' : 'आमचा पत्ता'}
+                      {lang === 'en' ? 'Our Location' : lang === 'hi' ? 'हमारा पता' : 'आमचा पत्ता'}
                     </p>
                     <p className="mt-1 text-sm font-medium text-white">
-                      {lang === 'en' ? BUSINESS_INFO.locationEn : BUSINESS_INFO.locationMr}
+                      {lang === 'en'
+                        ? BUSINESS_INFO.locationEn
+                        : lang === 'hi'
+                        ? BUSINESS_INFO.locationHi
+                        : BUSINESS_INFO.locationMr}
                     </p>
                   </div>
                 </div>
@@ -90,11 +102,13 @@ export default function HowItWorksSection({ lang }) {
                   <Clock className="mt-0.5 h-5 w-5 shrink-0 text-[#E8A317]" />
                   <div>
                     <p className="text-xs font-bold tracking-wide text-emerald-200 uppercase">
-                      {lang === 'en' ? 'Timings' : 'वेळ'}
+                      {lang === 'en' ? 'Timings' : lang === 'hi' ? 'समय' : 'वेळ'}
                     </p>
                     <p className="mt-1 text-sm font-medium text-white">
                       {lang === 'en'
                         ? `Delivery: ${BUSINESS_INFO.deliveryTiming} | Pickup: ${BUSINESS_INFO.pickupTiming}`
+                        : lang === 'hi'
+                        ? `होम डिलीवरी: ${BUSINESS_INFO.deliveryTiming} | सेल्फ पिकअप: ${BUSINESS_INFO.pickupTiming}`
                         : `डिलिव्हरी: ${BUSINESS_INFO.deliveryTiming} | पिकअप: ${BUSINESS_INFO.pickupTiming}`}
                     </p>
                   </div>
@@ -105,11 +119,17 @@ export default function HowItWorksSection({ lang }) {
             <div className="lg:col-span-5">
               <div className="rounded-3xl border border-white/15 bg-white/8 p-6 backdrop-blur-xs">
                 <h3 className="text-lg font-bold">
-                  {lang === 'en' ? 'Quick Order & Follow Us' : 'थेट संपर्क व ऑर्डर'}
+                  {lang === 'en'
+                    ? 'Quick Order & Follow Us'
+                    : lang === 'hi'
+                    ? 'सीधा संपर्क व ऑर्डर'
+                    : 'थेट संपर्क व ऑर्डर'}
                 </h3>
                 <p className="mt-1 text-xs text-emerald-100/75">
                   {lang === 'en'
                     ? 'Have custom cutting instructions or bulk party orders? Reach us directly.'
+                    : lang === 'hi'
+                    ? 'विशेष कटिंग निर्देश या बड़ी पार्टी ऑर्डर के लिए सीधे व्हाट्सएप पर संपर्क करें।'
                     : 'समारंभ किंवा विशेष कटिंगसाठी थेट व्हॉट्सॲपवर मेसेज करा.'}
                 </p>
 
